@@ -31,7 +31,7 @@ class AnimalSerializer(serializers.Serializer):
         non_editable_keys = ("sex", "group")
         for key, value in validated_data.items():
             if key in non_editable_keys:
-                raise KeyError
+                raise KeyError(key)
             setattr(instance, key, value)
         instance.save()
         return instance
